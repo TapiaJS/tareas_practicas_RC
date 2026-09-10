@@ -8,4 +8,27 @@ Investigue sobre cuál es la diferencia entre un cable serial DTE y serial DCE.
 \end{tcolorbox}
 
 \subsection*{Solución}
-% --- Escribe aquí la solución ---
+Antes de mencionar la diferencia entre ambas categorías, es necesario comprender lo que significa cada una.
+
+\begin{itemize}
+    \item \textbf{¿Qué es el Data Terminal Equipment (DTE)?}
+    Un Equipo Terminal de Datos es cualquier dispositivo que pueda servir como fuente o destino de datos digitales en binario. En la \textbf{capa física} puede ser una terminal, computadora, impresora o cualquier otro dispositivo que genere o consuma datos digitales. Siendo que los DTE no suelen comunicar información, pero necesitan un intermediario para poder comunicarse \cite{dte_vs_dce_cables} \cite{geeksforgeeks2020dte}.
+
+    \item \textbf{¿Qué es el Data Circuit Terminating Equipment (DCE)?}
+    Los Equipos de Comunicación de Datos son una categoría que incluye cualquier dispositivo que transmite o recibe datos en forma de señal analógica o digital a través de una red. En la \textbf{capa física}, un DCE toma datos generados por un DTE, los convierte en una señal apropiada y luego introduce la señal en un enlace de telecomunicaciones. Los DTE comúnmente utilizados en está capa incluyen módems \cite{geeksforgeeks2020dte}. 
+\end{itemize}
+
+Por lo tanto, ambas categorías de equipos (DTE y DCE) son interdependientes, es decir, que la comunicación de uno normalmente involucra al otro. Así que la \textbf{principal diferencia} entre una conexión serial \textbf{DTE} y una \textbf{DCE} radica en quién marca el ritmo (la sincronización) de la comunicación.
+
+Como los enlaces seriales envían los datos bit por bit en una fila continua, ambos extremos necesitan estar sincronizados para saber dónde empieza y dónde termina cada bit.
+
+El \textbf{extremo DCE} del cable es el encargado de generar y enviar la señal de reloj que dicta la velocidad a la que viajarán los datos. 
+Mientas que, el \textbf{extremo DTE} del cable es quien recibe y obedece la velocidad del reloj que le manda el DCE.
+
+\textbf{Conexiones Seriales en Cisco Packet Tracer}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{conexiones_seriales.png}
+    \caption{Captura de pantalla de la sección \textbf{Connections/Links} de la documentación del emulador Cisco Packet Tracer \cite{cisco_pt_help}.}
+\end{figure}
+Si se elige el tipo de conexión \textbf{Serial DCE} y, a continuación, se conectan dos dispositivos, el primer dispositivo será el lado DCE y el segundo se configurará automáticamente como el lado DTE. Lo contrario ocurre si se elige el tipo de conexión \textbf{Serial DTE}.

@@ -1,0 +1,65 @@
+% ============================================================
+% Problema 11
+% ============================================================
+\section{Problema 11: Internet no funciona}
+
+\begin{tcolorbox}[enunciado]
+Un usuario llega a la oficina y reporta que Internet no funciona. \\
+La configuración de red de su computadora es la siguiente:
+
+\vspace{10pt}
+\begin{center}
+\begin{minipage}{5.5cm}
+\begin{tabular}{ll}
+Dirección IP:   & 192.168.10.25 \\
+Máscara: & 255.255.255.0 \\
+Gateway:     & 192.168.10.2 \\
+DNS  & 8.8.8.8
+\end{tabular}
+\end{minipage}
+\end{center}
+\vspace{10pt}
+
+\begin{tabular}{ll}
+Dirección IP:   & 192.168.10.25 \\
+Máscara: & -> 255.255.255.0 \\
+Gateway:     & -> 192.168.10.2 \\
+DNS  & -> 8.8.8.8
+\end{tabular}
+
+Se realizan las siguientes pruebas:
+\begin{terminal}
+\begin{tabular}{ll}
+ping 127.0.0.1    & -> Exitoso \\
+ping 192.168.10.1 & -> Exitoso \\
+ping 8.8.8.8      & -> Exitoso \\
+ping google.com   & -> Falla
+\end{tabular}
+\end{terminal}
+El usuario no puede navegar por páginas web.
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item ¿Qué capas del modelo OSI podrían estar involucradas?
+    \item Si \texttt{ping 127.0.0.1} funciona, ¿qué estamos comprobando?
+    \item Si \texttt{ping 192.168.10.1} funciona, ¿qué podemos deducir?
+    \item Si \texttt{ping 8.8.8.8} funciona pero \texttt{ping google.com} falla, ¿qué componente sospecharías?
+    \item ¿Qué función cumple DNS?
+    \item ¿Qué comandos utilizarías para comprobar la configuración DNS?
+    \item ¿Cómo solucionarías el problema?
+    \item ¿Por qué sería incorrecto decir inmediatamente que el cable de red está dañado?
+\end{enumerate}
+
+Como variante, supongamos que las pruebas producen los siguientes resultados:
+\begin{terminal}
+\begin{tabular}{ll}
+ping 127.0.0.1    & -> Exitoso \\
+ping 192.168.10.1 & -> Falla \\
+ping 8.8.8.8      & -> Falla \\
+ping google.com   & -> Falla
+\end{tabular}
+\end{terminal}
+En este caso, determina en qué capa probablemente se encuentra el problema y qué pruebas realizarías antes de modificar la configuración de red.
+\end{tcolorbox}
+
+\subsection*{Solución}
+% Escribe aquí tu solución para el Problema 11...

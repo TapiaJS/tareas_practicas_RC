@@ -1,0 +1,71 @@
+% ============================================================
+% Problema 9
+% ============================================================
+\section{Problema 9: Capa 3: RIP no está aprendiendo rutas}
+
+\begin{tcolorbox}[enunciado]
+Se tienen tres routers: R1, R2 y R3. Los routers utilizan RIPv2 para intercambiar rutas.
+
+\vspace{10pt}
+\begin{center}
+\begin{tikzpicture}[
+    node distance=3.5cm, 
+    texto/.style={align=center}
+]
+    % Definición de los Routers
+    \node (R1) {$R1$};
+    \node (R2) [right=of R1] {$R2$};
+    \node (R3) [right=of R2] {$R3$};
+    
+    % Definición de las redes LAN 
+    \node (L1) [above=0.4cm of R1, texto] {LAN A \\ 192.168.1.0/24};
+    \node (L2) [above=0.4cm of R2, texto] {LAN B \\ 192.168.2.0/24};
+    \node (L3) [above=0.4cm of R3, texto] {LAN C \\ 192.168.3.0/24};
+    
+    % Líneas de conexión (Cables)
+    \draw (R1) -- (R2);
+    \draw (R2) -- (R3);
+    \draw (R1) -- (L1);
+    \draw (R2) -- (L2);
+    \draw (R3) -- (L3);
+\end{tikzpicture}
+\end{center}
+\vspace{10pt}
+
+La configuración esperada de RIP es:
+
+\vspace{10pt}
+\begin{center}
+\begin{minipage}{5.5cm}
+\begin{verbatim}
+R1: network 192.168.1.0
+    network 10.0.12.0
+
+R2: network 10.0.12.0
+    network 10.0.23.0
+    network 192.168.2.0
+
+R3: network 10.0.23.0
+    network 192.168.3.0
+\end{verbatim}
+\end{minipage}
+\end{center}
+\vspace{10pt}
+
+Un equipo de la LAN A puede comunicarse con R1, pero no puede llegar a un equipo de la LAN C.
+
+Al ejecutar \texttt{show ip route} en R1, no aparece ninguna ruta hacia 192.168.3.0/24.
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item ¿A qué capa del modelo OSI corresponde principalmente este problema?
+    \item ¿Qué protocolo de enrutamiento se está utilizando?
+    \item ¿Qué comando utilizarías para comprobar si RIP está funcionando?
+    \item ¿Qué comando utilizarías para revisar las rutas aprendidas?
+    \item ¿Qué podría ocurrir si R3 tiene mal configurado el comando network?
+    \item ¿Cómo verificarías la conectividad entre los routers?
+    \item ¿Qué ruta debería aparecer en R1 para llegar a 192.168.3.0/24?
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection*{Solución}
+% Escribe aquí tu solución para el Problema 9...

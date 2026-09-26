@@ -1,0 +1,34 @@
+% ============================================================
+\section{Problema 3: Configuración de topología del VLSM II}
+% ============================================================
+
+\begin{tcolorbox}[enunciado]
+En la asignación se le adjunta un \texttt{.pkt} en donde solamente tendrá que hacer las configuraciones correspondientes.
+
+Usando el VLSM que en el anterior ejercicio calculó, entonces configure la topología considerando estos puntos:
+\begin{itemize}
+    \item Todos los dispositivos intermedios deben tener hostname, el cual es el que viene en la etiqueta del dispositivo por defecto, por ejemplo cuando se arrastra un router dice router1.
+    \item Para todos los Switches use contraseña tipo 7 y Telnet.
+    \item Para todos los Router deben usar contraseña tipo 5 y configurado SSH. 
+    \item Para el dominio de ssh use \texttt{ciencias.unam.mx}.
+    \item Todos los dispositivos intermedios deben tener contraseña de enable, en este caso para switches debe ser 7 y routers tipo 5. 
+    \item Debe ir enrutado con RIP.
+    \item Los routers (EBIO, RFIS, RORI, RMAT, RAMO, RPO, CRouter/taller, RYELIZ, RTLATIPAC, RTLAH, C3Router/EXBIB) deben dar DHCP \textbf{solamente a los dispositivos finales excepto los servidores.} 
+    
+    \textbf{Observación:} Ponga atención en qué segmento esté dando DHCP ya que no es a todos, sino como corresponde al departamento.
+    \item Debe configurarse bien el servicio de SMTP y WEB. En el caso de servicio de SMTP todas las computadoras y laptops deben tener un usuario y contraseña, además de ello, debe ser dominio \texttt{ciencias.unam.mx}. 
+    \item En el FTP configure una cuenta por cada departamento e intente subir un archivo en texto en claro.
+    \item Para servicio HTTP sería \texttt{www.redfciencias.com} y para HTTPS \texttt{web.fciencias.unam.mx}.
+    \item Como prueba que sí funciona la configuración, es hacer ping.
+    \item Personalice las dos páginas usando HTML y CSS. Investigue como hacerlo.
+\end{itemize}
+
+Conteste las siguientes preguntas:
+\begin{itemize}
+    \item ¿Cuántos saltos muestra la tabla de enrutamiento si estamos desde el edificio de biología hacia el segmento de edificio del Tlahuizcalpan?
+    \item La laptop0 quiere hacer un ping a la laptop6 ¿Es la misma IP que se quiere comunicar de la laptop0 y laptop6? Hint: Revise las IP asignadas por el DHCP y también recuerde el protocolo ARP.
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{Solución}
+% Escribe aquí tu solución para el Problema 3...

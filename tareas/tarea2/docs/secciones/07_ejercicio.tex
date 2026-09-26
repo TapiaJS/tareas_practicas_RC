@@ -1,0 +1,37 @@
+% ============================================================
+% Problema 7
+% ============================================================
+\section{Problema 7: Tabla MAC}
+
+\begin{tcolorbox}[enunciado]
+Un switch comienza con su tabla MAC vacía.
+
+La topología es:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{ejercicio7/image.png}
+\end{figure}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{PC-A} $\rightarrow$ MAC: 00D0.BA38.2B42 
+    \item \textbf{PC-B} $\rightarrow$ MAC: 0002.4A91.DC6E
+    \item \textbf{PC-D} $\rightarrow$ MAC: 0001.635C.797C
+\end{itemize}
+
+El switch recibe las siguientes tramas:
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item PC-A $\to$ PC-D
+    \item PC-B $\to$ PC-A
+    \item PC-D $\to$ PC-B
+\end{enumerate}
+
+\begin{itemize}[leftmargin=*]
+    \item Después de cada trama, indica cómo queda la tabla MAC del switch. \\
+    \textbf{Hint:} El switch aprende la dirección MAC observando de dónde viene una trama, no mirando hacia dónde va.
+    \item ¿Por qué la primera trama puede ser enviada por varios puertos?
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{Solución}
+% Escribe aquí tu solución para el Problema 7...

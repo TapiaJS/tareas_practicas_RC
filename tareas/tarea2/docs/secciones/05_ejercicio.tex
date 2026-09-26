@@ -1,0 +1,51 @@
+% ============================================================
+% Problema 5
+% ============================================================
+\section{Problema 5: VLSM Inverso}
+
+\begin{tcolorbox}[enunciado]
+\textbf{Instrucciones:} Investiga qué es un \textbf{VLSM inverso} y resuelve el siguiente problema sin utilizar fórmulas. La solución debe obtenerse mediante el análisis visual de los bits de las direcciones IP.
+
+\textbf{Enunciado:}\\
+Un administrador de red encuentra cuatro subredes consecutivas ya configuradas en una sucursal:
+\[
+192.168.10.0/24, \quad 192.168.11.0/24, \quad 192.168.12.0/24, \quad 192.168.13.0/24
+\]
+Necesita resumirlas en una única ruta o \textbf{supernet} que abarque todas las subredes. Determina:
+\begin{itemize}[leftmargin=*]
+    \item El segmento de red (Network ID).
+    \item La máscara en formato CIDR.
+    \item La máscara en formato decimal.
+    \item La primera IP de host utilizable.
+    \item La última IP de host utilizable.
+    \item La IP de broadcast.
+    \item El número total de hosts utilizables.
+\end{itemize}
+
+\textbf{Restricción:} No utilices fórmulas para determinar la supernet. Representa el octeto que cambia en las cuatro direcciones mediante bits y encuentra visualmente qué bits permanecen constantes y cuáles cambian.
+
+\textbf{Formato de respuesta:}
+\vspace{0.3cm}
+\begin{center}
+    \begin{tabular}{lp{8cm}}
+    \toprule
+    \textbf{Parámetro} & \textbf{Resultado} \\
+    \midrule
+    Segmento de Red (ID) & \\
+    Máscara CIDR & \\
+    Máscara Decimal & \\
+    Primer Host Útil & \\
+    Último Host Útil & \\
+    IP de Broadcast & \\
+    Total de Hosts Utilizables & \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+\vspace{0.3cm}
+
+\textbf{Hint 1:} Observa únicamente el octeto que cambia entre las cuatro redes. Escríbelo en bits y alinea los cuatro valores verticalmente. Busca desde la izquierda los bits que son iguales en todas las direcciones. \\
+\textbf{Hint 2:} Una vez encontrados los bits que permanecen constantes, imagina que todos los bits restantes son ``libres''. Ponlos en cero para encontrar el segmento de red y en uno para encontrar el broadcast. A partir de esos dos extremos puedes obtener el rango de hosts.
+\end{tcolorbox}
+
+\subsection*{Solución}
+% Escribe aquí tu solución para el Problema 5...

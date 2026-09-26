@@ -1,0 +1,48 @@
+% ============================================================
+\section{Problema 4: VLSM III}
+% ============================================================
+
+\begin{tcolorbox}[enunciado]
+Debido a la gran expansión en el flujo de pasajeros internacionales, operaciones de carga comercial y la incorporación de distritos hoteleros y comerciales, la administración de TI del \textbf{Aeropuerto Internacional Felipe Ángeles (AIFA)} requiere reestructurar por completo su direccionamiento lógico de red.
+
+El direccionamiento debe realizarse de manera óptima utilizando la técnica de \textbf{VLSM (Variable Length Subnet Mask)} a partir del bloque de direccionamiento privado de Clase A: \textbf{10.0.0.0/8}.
+
+Para garantizar la estabilidad del enrutamiento y evitar el desperdicio de direcciones, se solicita diseñar la topología considerando los requerimientos de hosts de cada infraestructura y servicio del aeropuerto. Los datos deben ser organizados estrictamente de mayor a menor número de hosts antes de asignar los segmentos, incluyendo las interconexiones entre los enrutadores principales de la red troncal (backbone).
+
+A continuación se presenta la distribución oficial calculada para los departamentos, terminales y enlaces troncales del complejo aeroportuario:
+
+\vspace{0.3cm}
+\begin{center}
+    \begin{tabular}{lc}
+    \toprule
+    \textbf{Infraestructura (AIFA)} & \textbf{Hosts} \\
+    \midrule
+    Terminal 1 Pasajeros & 8000 \\
+    Red Wifi Pública Principal & 5000 \\
+    Terminal 2 Pasajeros & 4100 \\
+    Aduanas e Impuestos T1 & 3500 \\
+    Red de Locales Comerciales & 3000 \\
+    Zona de Carga y Logística & 2600 \\
+    Oficinas de Aerolíneas & 2200 \\
+    Hoteles y Alojamientos AIFA & 2050 \\
+    Sistemas de Check-in T2 & 1800 \\
+    Monitoreo de Cámaras CCTV & 1500 \\
+    Estacionamientos y Accesos & 1200 \\
+    Torre de Control y Pistas & 1000 \\
+    Centro de Datos AIFA & 500 \\
+    Enlace Core a Terminal 1 & 2 \\
+    Enlace Core a Terminal 2 & 2 \\
+    Enlace Core a Torre de Control & 2 \\
+    Enlace Core a Zona de Carga & 2 \\
+    Enlace Terminal 1 a Terminal 2 & 2 \\
+    Enlace Respaldo Data Center & 2 \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+\vspace{0.3cm}
+
+Se debe hacer el VLSM con esos hosts.
+\end{tcolorbox}
+
+\subsection*{Solución}
+% Escribe aquí tu solución para el Problema 4...

@@ -36,4 +36,222 @@ Los cálculos tienen que ser como lo hemos visto en clase.
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 1...
+Se ordena de mayor a menor las redes de acuerdo a los hosts que necesitan y se le suman 2 hosts extra (segmento de red y la dirección de broadcast):
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Medicina:} $27949 + 2 = 27951$ hosts
+    \item \textbf{Derecho:} $17800 + 2 = 17802$ hosts
+    \item \textbf{Contaduría y Administración:} $16257 + 2 = 16259$ hosts
+    \item \textbf{Ciencias políticas:} $12887 + 2 = 12889$ hosts
+    \item \textbf{Ingeniería:} $12500 + 2 = 12502$ hosts
+    \item \textbf{Ciencias:} $11000 + 2 = 11002$ hosts
+    \item \textbf{Filosofía y letras:} $10000 + 2 = 10002$ hosts
+    \item \textbf{Arquitectura:} $7605 + 2 = 7607$ hosts
+    \item \textbf{Química:} $7157 + 2 = 7159$ hosts
+    \item \textbf{Economía:} $7000 + 2 = 7002$ hosts
+    \item \textbf{Psicología:} $4500 + 2 = 4502$ hosts
+    \item \textbf{Artes y Diseño:} $3444 + 2 = 3446$ hosts
+    \item \textbf{Odontología:} $3375 + 2 = 3377$ hosts
+    \item \textbf{Veterinaria:} $3300 + 2 = 3302$ hosts
+    \item \textbf{ENALLT:} $486 + 2 = 488$ hosts
+\end{itemize}
+
+\vspace{15pt}
+\begin{center}
+% \resizebox fuerza a la tabla a ajustarse al ancho exacto del texto sin desbordarse
+\resizebox{\linewidth}{!}{
+\begin{tabular}{r cccccccc c cccccccc l l}
+\toprule
+& \multicolumn{8}{c}{\textbf{2do Octeto}} & & \multicolumn{8}{c}{\textbf{3er Octeto}} & & \\
+\cmidrule(lr){2-9} \cmidrule(lr){11-18}
+\textbf{Bits} & 24 & 23 & 22 & 21 & 20 & 19 & 18 & 17 & & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & & \\
+\textbf{Binario} & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 & & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 & & \\
+\textbf{Hosts} & -- & -- & -- & -- & -- & -- & -- & -- & & 65536 & 32768 & 16384 & 8192 & 4096 & 2048 & 1024 & 512 & & \\
+\midrule
+
+% Medicina
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Medicina \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Medicina \\
+\addlinespace
+
+% Derecho
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Derecho \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Derecho \\
+\addlinespace
+
+% Contaduría y Adm.
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & . & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Contaduría y Adm. \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & . & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Contaduría y Adm. \\
+\addlinespace
+
+% Ciencias Políticas
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & . & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Ciencias Políticas \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & . & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Ciencias Políticas \\
+\addlinespace
+
+% Ingeniería
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & . & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Ingeniería \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & . & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Ingeniería \\
+\addlinespace
+
+% Ciencias
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & . & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Ciencias \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & . & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Ciencias \\
+\addlinespace
+
+% Filosofía y Letras
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Filosofía y Letras \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Filosofía y Letras \\
+\addlinespace
+
+% Arquitectura
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Arquitectura \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Arquitectura \\
+\addlinespace
+
+% Química
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 0 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Química \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 0 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Química \\
+\addlinespace
+
+% Economía
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Economía \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Economía \\
+\addlinespace
+
+% Psicología
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & 0 & . 0 & Segmento Psicología \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & 1 & . 255 & Broadcast Psicología \\
+\addlinespace
+
+% Artes y Diseño
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 1 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & . 0 & Segmento Artes y Diseño \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 1 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & . 255 & Broadcast Artes y Diseño \\
+\addlinespace
+
+% Odontología
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 1 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & . 0 & Segmento Odontología \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 1 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & . 255 & Broadcast Odontología \\
+\addlinespace
+
+% Veterinaria
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 1 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & . 0 & Segmento Veterinaria \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 1 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & . 255 & Broadcast Veterinaria \\
+\addlinespace
+
+% ENALLT
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 1 & 1 & 1 & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & . 0 & Segmento ENALLT \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & . & 1 & 1 & 1 & 1 & 0 & 0 & \multicolumn{1}{c|}{0} & 1 & . 255 & Broadcast ENALLT \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\vspace{15pt}
+
+\subsubsection*{Asignación de Subredes}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Parte Medicina:} \\
+    \textbf{Segmento de red:} 10.0.0.0 /17 \\
+    \textbf{Rango de IP's útiles:} 10.0.0.1 a 10.0.127.254 \\
+    \textbf{Broadcast:} 10.0.127.255 \\
+    \textbf{Máscara:} 255.255.128.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Derecho:} \\
+    \textbf{Segmento de red:} 10.0.128.0 /17 \\
+    \textbf{Rango de IP's útiles:} 10.0.128.1 a 10.0.255.254 \\
+    \textbf{Broadcast:} 10.0.255.255 \\
+    \textbf{Máscara:} 255.255.128.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Contaduría y Administración:} \\
+    \textbf{Segmento de red:} 10.1.0.0 /18 \\
+    \textbf{Rango de IP's útiles:} 10.1.0.1 a 10.1.63.254 \\
+    \textbf{Broadcast:} 10.1.63.255 \\
+    \textbf{Máscara:} 255.255.192.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Ciencias Políticas:} \\
+    \textbf{Segmento de red:} 10.1.64.0 /18 \\
+    \textbf{Rango de IP's útiles:} 10.1.64.1 a 10.1.127.254 \\
+    \textbf{Broadcast:} 10.1.127.255 \\
+    \textbf{Máscara:} 255.255.192.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Ingeniería:} \\
+    \textbf{Segmento de red:} 10.1.128.0 /18 \\
+    \textbf{Rango de IP's útiles:} 10.1.128.1 a 10.1.191.254 \\
+    \textbf{Broadcast:} 10.1.191.255 \\
+    \textbf{Máscara:} 255.255.192.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Ciencias:} \\
+    \textbf{Segmento de red:} 10.1.192.0 /18 \\
+    \textbf{Rango de IP's útiles:} 10.1.192.1 a 10.1.255.254 \\
+    \textbf{Broadcast:} 10.1.255.255 \\
+    \textbf{Máscara:} 255.255.192.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Filosofía y Letras:} \\
+    \textbf{Segmento de red:} 10.2.0.0 /18 \\
+    \textbf{Rango de IP's útiles:} 10.2.0.1 a 10.2.63.254 \\
+    \textbf{Broadcast:} 10.2.63.255 \\
+    \textbf{Máscara:} 255.255.192.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Arquitectura:} \\
+    \textbf{Segmento de red:} 10.2.64.0 /19 \\
+    \textbf{Rango de IP's útiles:} 10.2.64.1 a 10.2.95.254 \\
+    \textbf{Broadcast:} 10.2.95.255 \\
+    \textbf{Máscara:} 255.255.224.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Química:} \\
+    \textbf{Segmento de red:} 10.2.96.0 /19 \\
+    \textbf{Rango de IP's útiles:} 10.2.96.1 a 10.2.127.254 \\
+    \textbf{Broadcast:} 10.2.127.255 \\
+    \textbf{Máscara:} 255.255.224.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Economía:} \\
+    \textbf{Segmento de red:} 10.2.128.0 /19 \\
+    \textbf{Rango de IP's útiles:} 10.2.128.1 a 10.2.159.254 \\
+    \textbf{Broadcast:} 10.2.159.255 \\
+    \textbf{Máscara:} 255.255.224.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Psicología:} \\
+    \textbf{Segmento de red:} 10.2.160.0 /19 \\
+    \textbf{Rango de IP's útiles:} 10.2.160.1 a 10.2.191.254 \\
+    \textbf{Broadcast:} 10.2.191.255 \\
+    \textbf{Máscara:} 255.255.224.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Artes y Diseño:} \\
+    \textbf{Segmento de red:} 10.2.192.0 /20 \\
+    \textbf{Rango de IP's útiles:} 10.2.192.1 a 10.2.207.254 \\
+    \textbf{Broadcast:} 10.2.207.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Odontología:} \\
+    \textbf{Segmento de red:} 10.2.208.0 /20 \\
+    \textbf{Rango de IP's útiles:} 10.2.208.1 a 10.2.223.254 \\
+    \textbf{Broadcast:} 10.2.223.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Veterinaria:} \\
+    \textbf{Segmento de red:} 10.2.224.0 /20 \\
+    \textbf{Rango de IP's útiles:} 10.2.224.1 a 10.2.239.254 \\
+    \textbf{Broadcast:} 10.2.239.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte ENALLT:} \\
+    \textbf{Segmento de red:} 10.2.240.0 /23 \\
+    \textbf{Rango de IP's útiles:} 10.2.240.1 a 10.2.241.254 \\
+    \textbf{Broadcast:} 10.2.241.255 \\
+    \textbf{Máscara:} 255.255.254.0 
+\end{itemize}

@@ -36,6 +36,7 @@ Los cálculos tienen que ser como lo hemos visto en clase.
 \end{tcolorbox}
 
 \subsection*{Solución}
+\subsubsection*{Lista de Redes}
 Se ordena de mayor a menor las redes de acuerdo a los hosts que necesitan y se le suman 2 hosts extra (segmento de red y la dirección de broadcast):
 
 \begin{itemize}[leftmargin=*]
@@ -55,6 +56,11 @@ Se ordena de mayor a menor las redes de acuerdo a los hosts que necesitan y se l
     \item \textbf{Veterinaria:} $3300 + 2 = 3302$ hosts
     \item \textbf{ENALLT:} $486 + 2 = 488$ hosts
 \end{itemize}
+
+\subsubsection*{Tabla de Direccionamiento}
+Tenemos 3 octetos libres pero el último octeto tiene un máximo de 256 host. Así que se manipulará únicamente marcando puros ceros (segmento de red) o unos (segmento broadcast) dependiendo el caso. Esto es ocasionado porque la cantidad mínima de hosts que necesita CU es de 488, necesitando al menos 9 bits para poder direccionar cada host. Siendo que los bits se van modificando a partir del primer bit del tercer octeto.
+
+Por cuestiones de diseño y presentación, decidimos que el último octeto se represente de manera decimal en la tabla, pues su representación en binario sólo puede ser 00000000 o 11111111. Ocupando espacio visual que se puede reducir utilizando su representación en decimal. 
 
 \vspace{15pt}
 \begin{center}

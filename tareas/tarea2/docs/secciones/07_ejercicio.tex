@@ -34,4 +34,43 @@ El switch recibe las siguientes tramas:
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 7...
+
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item Después de la trama PC-A $\to$ PC-D la tabla MAC del switch queda:
+\begin{verbatim}
+          Mac Address Table
+-------------------------------------------
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+   1    00D0.BA38.2B42    DYNAMIC     Fa0/1
+
+\end{verbatim}
+    \item Después de la trama PC-B $\to$ PC-A la tabla MAC del switch queda:
+\begin{verbatim}
+          Mac Address Table
+-------------------------------------------
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+   1    00D0.BA38.2B42    DYNAMIC     Fa0/1
+   1    0002.4A91.DC6E    DYNAMIC     Fa0/2
+
+\end{verbatim}
+    \item Después de la trama PC-D $\to$ PC-B la tabla MAC del switch queda:
+\begin{verbatim}
+          Mac Address Table
+-------------------------------------------
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+   1    00D0.BA38.2B42    DYNAMIC     Fa0/1
+   1    0002.4A91.DC6E    DYNAMIC     Fa0/2
+   1    0001.635C.797C    DYNAMIC     Fa0/3
+
+\end{verbatim}
+\end{enumerate}
+
+¿Por qué la primera trama puede ser enviada por varios puertos?\\\\
+Porque al inicio la tabla MAC del switch está vacía por lo que cuando llega la trama de PC-A buscando a PC-D, 
+el switch no sabe en qué puerto se encuentra la dirección MAC de destino, entonces, para garantizar que el mensaje llegue, 
+utiliza un mecanismo llamado "inundación" (flooding), que consiste en replicar y enviar la trama por todos sus puertos 
+activos, a excepción del puerto por donde ingresó (en este caso Fa0/1).

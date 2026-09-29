@@ -18,4 +18,44 @@ Para cada situación, determina qué capa del modelo OSI está principalmente in
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 6...
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Un cable Ethernet está físicamente dañado.
+    
+    Capa 1 (Física): Porque esta capa maneja directamente 
+    el hardware y el medio de transmisión, incluyendo los cables (Ethernet) y las señales.
+    
+    \item Dos equipos tienen direcciones MAC diferentes, pero uno no puede comunicarse con el otro dentro de la LAN.
+    
+    Capa 2 (Enlace de datos): Porque la comunicación local (dentro de una misma red) y 
+    el uso de direcciones MAC en tramas Ethernet son funciones exclusivas de esta capa.
+    
+    \item Un equipo tiene configurada una máscara de subred incorrecta.
+    
+    Capa 3 (Red): Porque la máscara de subred es parte del direccionamiento lógico 
+    (como IPv4 e IPv6) que se utiliza para el enrutamiento.
+    
+    \item Un servidor recibe una gran cantidad de segmentos TCP fuera de orden.
+    
+    Capa 4 (Transporte): Porque el protocolo TCP, que se encarga del control de flujo 
+    y el ordenamiento de los segmentos para levantar servicios, opera en esta capa.\newpage
+
+    \item Un switch aprende la dirección MAC de un equipo.
+    
+    Capa 2 (Enlace de datos): Porque el switch es el dispositivo principal de esta capa 
+    y su función es procesar direcciones MAC para preparar el mensaje en tramas.
+    
+    \item Un router determina por qué interfaz debe enviar un paquete.
+    
+    Capa 3 (Red): Porque el router es el dispositivo que trabaja con paquetes 
+    para buscar la mejor ruta hacia el destino mediante el enrutamiento.
+    
+    \item Una tarjeta de red no detecta ningún enlace físico.
+    
+    Capa 1 (Física): Porque la falta de detección de enlace se refiere a una 
+    interrupción en los bits, señales o el propio cable.
+    
+    \item Un puerto TCP está siendo rechazado por el servidor.
+    
+    Capa 4 (Transporte): Porque la administración de puertos mediante 
+    protocolos como TCP o UDP para la comunicación de servicios ocurre en este nivel.
+\end{enumerate}

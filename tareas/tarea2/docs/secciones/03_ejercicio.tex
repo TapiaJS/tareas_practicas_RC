@@ -31,4 +31,73 @@ Conteste las siguientes preguntas:
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 3...
+\subsubsection*{Pregunta 1}
+\begin{tcolorbox}[enunciado]
+¿Cuántos saltos muestra la tabla de enrutamiento si estamos desde el edificio de Biología hacia el segmento de edificio del Tlahuizcalpan?
+\end{tcolorbox}
+
+Muestra \textbf{5 saltos} (\texttt{[120/5]}).
+
+El protocolo \textbf{RIP (Routing Information Protocol)} es un protocolo de enrutamiento dinámico de tipo Vector Distancia cuya única métrica es el \textbf{conteo de saltos} (\textit{hop count}), donde cada salto equivale a cruzar un router para llegar a la red de destino.
+
+Si nos posicionamos en el router del edificio de Biología (\texttt{E.BIO}) y queremos alcanzar el segmento LAN de Tlahuizcalpan (\texttt{172.24.0.0/19}, conectado por medio del \texttt{RTLAH}), existen dos rutas físicas posibles en la topología:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Ruta Superior (Vía Oriente y Poniente --- 5 saltos):} \\
+    \texttt{E.BIO} $\xrightarrow{\text{1}}$ \texttt{RORI} $\xrightarrow{\text{2}}$ \texttt{RPO} $\xrightarrow{\text{3}}$ \texttt{CRouterTaller} $\xrightarrow{\text{4}}$ \texttt{C2Router} $\xrightarrow{\text{5}}$ \textbf{\texttt{RTLAH}} (Llega a \texttt{172.24.0.0/19}).
+
+    \item \textbf{Ruta Inferior (Vía Física, Matemáticas y Amoxcalli --- 6 saltos):} \\
+    \texttt{E.BIO} $\xrightarrow{1}$ \texttt{RFIS} $\xrightarrow{2}$ \texttt{RMAT} $\xrightarrow{3}$ \texttt{RAMO} $\xrightarrow{4}$ \texttt{CRouterTaller} $\xrightarrow{5}$ \texttt{C2Router} $\xrightarrow{6}$ \textbf{\texttt{RTLAH}}.
+\end{enumerate}
+
+Como RIP siempre selecciona el camino con el menor número de saltos, descarta la ruta de 6 saltos e instala en la tabla de enrutamiento la ruta de \textbf{5 saltos} a través de \texttt{RORI}.
+
+Al ejecutar el comando \texttt{show ip route} en la consola de \texttt{E.BIO}, la línea exacta que lo comprueba es:
+
+\begin{terminal}
+R    172.24.0.0/19 [120/5] via 172.24.118.142, 00:00:11, Serial0/0/1
+\end{terminal}
+
+\textit{(Donde \textbf{120} es la Distancia Administrativa de RIP y \textbf{5} es la métrica o número de saltos hasta el segmento de Tlahuizcalpan)}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{imagenes/soluciones/03_ejercicio/01_pregunta.png}
+    \caption{Captura de pantalla del resultado obtenido del comando \texttt{show ip route}.}
+\end{figure}
+
+\vspace{10pt}
+
+\subsubsection*{Pregunta 2}
+\begin{tcolorbox}[enunciado]
+La Laptop0 quiere hacer un ping a la Laptop6. ¿Es la misma IP que se quiere comunicar de la Laptop0 y Laptop6? \textit{(Hint: Revise las IP asignadas por el DHCP y también recuerde el protocolo ARP).}
+\end{tcolorbox}
+
+\textbf{No es la misma dirección IP completa}. Durante el viaje del paquete, a nivel de \textbf{Capa 3 (Red)} las direcciones IP de origen y destino se mantienen intactas de extremo a extremo, mientras que a nivel de \textbf{Capa 2 (Enlace de Datos - Protocolo ARP)} la dirección con la que \texttt{Laptop0} se comunica primero en su red local es la de su \textbf{Default Gateway (\texttt{E.BIO})}, no directamente con \texttt{Laptop6}.
+
+Los routers de ambos edificios comenzaron a repartir direcciones dinámicas desde el número \texttt{.1}, aunque perteneciendo a \textbf{segmentos de red totalmente diferentes} dentro de nuestro cálculo VLSM:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{\texttt{Laptop0} (Edificio de Biología \texttt{/22}):} Recibe del DHCP una IP del segmento \texttt{172.24.108.0/22} (en nuestro caso, \textbf{\texttt{172.24.108.3}}).
+    \item \textbf{\texttt{Laptop6} (Ex-Biblioteca \texttt{/25}):} Recibe del DHCP una IP del segmento \texttt{172.24.118.0/25} (en nuestro caso, \textbf{\texttt{172.24.118.3}}).
+\end{itemize}
+
+Al comparar sus primeros tres octetos (\texttt{172.24.108.x} vs \texttt{172.24.118.x}) mediante la operación lógica AND con su máscara de subred, \texttt{Laptop0} detecta inmediatamente que \texttt{Laptop6} vive en una red remota aislada (otro dominio de broadcast).
+
+Como \texttt{Laptop0} sabe que \texttt{Laptop6} (\texttt{172.24.118.3}) no está en su mismo edificio, no puede usar el protocolo \textbf{ARP} para preguntar directamente por la dirección MAC de \texttt{Laptop6}, ya que los mensajes Broadcast de ARP (\texttt{FF:FF:FF:FF:FF:FF}) son bloqueados por el router \texttt{E.BIO} y jamás cruzan hacia otros edificios.
+
+En lugar de buscar a \texttt{Laptop6} en su red local, \texttt{Laptop0} ejecuta una petición \textbf{ARP buscando la dirección IP de su propio Default Gateway (\texttt{172.24.111.254} - Router \texttt{E.BIO})} para obtener la dirección MAC de la interfaz \texttt{Fa0/0} de \texttt{E.BIO}.
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{En el paquete IP (Capa 3):} La IP Origen (\texttt{172.24.108.1}) y la IP Destino (\texttt{172.24.118.1}) \textbf{nunca cambian} durante los 5 routers que cruza el ping.
+    \item \textbf{En la trama Ethernet/Serial (Capa 2):} Las direcciones físicas (MAC) \textbf{van cambiando en cada salto} (de \texttt{Laptop0} a \texttt{E.BIO}, y en el último tramo el router \texttt{C3RouterExbib} hace su propio ARP en la Ex-Biblioteca para descubrir la MAC de \texttt{Laptop6} y entregarle el ping final).
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{imagenes/soluciones/03_ejercicio/02_pregunta.png}
+    \caption{Captura de pantalla que muestra la tabla ARP de la Laptop0.}
+\end{figure}
+
+Abriendo el Command Prompt de la \texttt{Laptop0} después del ping y ejecutando el comando \texttt{arp -a}: la única IP registrada en su tabla ARP es 172.24.111.254, correspondiente a su router local \texttt{E.BIO}, y no la IP de la \texttt{Laptop6}.

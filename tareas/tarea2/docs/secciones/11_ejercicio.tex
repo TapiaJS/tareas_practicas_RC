@@ -62,4 +62,39 @@ En este caso, determina en qué capa probablemente se encuentra el problema y qu
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 11...
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item ¿Qué capas del modelo OSI podrían estar involucradas?\\
+    Capa 7 de aplicación: servicios que usan los programas, en este caso DNS.\\
+    Capa 3 de red: manejo de direcciones IP y el gateway.
+
+    \item Si \texttt{ping 127.0.0.1} funciona, ¿qué estamos comprobando?\\
+    Que la configuraci\'on de red est\'a funcionando correctamente.
+
+    \item Si \texttt{ping 192.168.10.1} funciona, ¿qué podemos deducir?\\
+    Que el equipo tiene comunicaci\'on con el gateway.
+
+    \item Si \texttt{ping 8.8.8.8} funciona pero \texttt{ping google.com} falla, ¿qué componente sospecharías?\\
+    Como el equipo si tiene acceso a internet pero no le puede asignar una IP a google.com, entonces creer\'ia que es el DNS.
+
+    \item ¿Qué función cumple DNS?\\
+    Convierte nombres de dominio a direcciones IP.
+
+    \item ¿Qué comandos utilizarías para comprobar la configuración DNS?\\
+    'nslookup google.com' para una consulta directa, o tambi\'en utilizar los comandos 'nslookup' y 'set' para
+     verificar o diagnosticar los registros DNS para su dominio.
+
+    \item ¿Cómo solucionarías el problema?\\
+    Primero comprobaría la configuración DNS con los comandos anteriores, si no responde sería cambiar el IP del servidor por otro
+    una vez mas intentar el comando de DNS y para asegurar hacer ping google.com.
+
+    \item ¿Por qué sería incorrecto decir inmediatamente que el cable de red está dañado?\\
+    Porque en los primeros 3 pings obtuvimos una respuesta exitosa, si fuera el cable no hubi\'eramos recibido respuesta de ninguno.
+
+    \item Variante\\
+    El problema probablemente está en la capa 1 o 2 (física o enlace), ya que el equipo no tiene 
+    comunicación ni con el gateway, que está en su misma red local. \\
+    Antes de modificar la configuración primero revisaría que el cable esté bien conectado y sin daños, 
+    después comprobaría que la interfaz de red est\'e activa y que la IP y la máscara sean 
+    correctas con 'ipconfig /all'.Si sigue sin funcionar probaría con otro cable o con otro puerto del switch.
+
+\end{enumerate}

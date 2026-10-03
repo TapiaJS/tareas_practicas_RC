@@ -39,4 +39,329 @@ Se tiene el segmento \textbf{172.24.0.0/16} y se desea hacer el VLSM de toda la 
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 2...
+\subsubsection*{Lista de Redes}
+Se ordena de mayor a menor las redes de acuerdo a los hosts que necesitan y se le suman 2 hosts extra (segmento de red y el segmento broadcast):
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Tlahuizcalpan:} $5354 + 2 = 5356$ hosts
+    \item \textbf{Poniente:} $2700 + 2 = 2702$ hosts
+    \item \textbf{Oriente:} $2480 + 2 = 2482$ hosts
+    \item \textbf{Amoxcalli:} $2392 + 2 = 2394$ hosts
+    \item \textbf{Física:} $2382 + 2 = 2384$ hosts
+    \item \textbf{Yelizcalli:} $1348 + 2 = 1350$ hosts
+    \item \textbf{Tlatipac:} $760 + 2 = 762$ hosts
+    \item \textbf{Biología A y B:} $686 + 2 = 688$ hosts
+    \item \textbf{Talleres:} $520 + 2 = 522$ hosts
+    \item \textbf{Matemáticas:} $266 + 2 = 268$ hosts
+    \item \textbf{Ex Biblioteca:} $100 + 2 = 102$ hosts
+    \item \textbf{A:} $4 + 2 = 6$ hosts
+    \item \textbf{B:} $4 + 2 = 6$ hosts
+    \item \textbf{C:} $4 + 2 = 6$ hosts
+    \item \textbf{D:} $4 + 2 = 6$ hosts
+    \item \textbf{E:} $4 + 2 = 6$ hosts
+    \item \textbf{F:} $4 + 2 = 6$ hosts
+    \item \textbf{G:} $4 + 2 = 6$ hosts
+    \item \textbf{H:} $4 + 2 = 6$ hosts
+    \item \textbf{I:} $4 + 2 = 6$ hosts
+    \item \textbf{J:} $4 + 2 = 6$ hosts
+    \item \textbf{K:} $4 + 2 = 6$ hosts
+    \item \textbf{L:} $4 + 2 = 6$ hosts
+\end{itemize}
+
+\subsubsection*{Tabla de Direccionamiento}
+
+\vspace{15pt}
+\begin{center}
+% \resizebox fuerza a la tabla a ajustarse al ancho exacto del texto sin desbordarse
+\resizebox{\linewidth}{!}{
+\begin{tabular}{r cccccccc c cccccccc l}
+\toprule
+& \multicolumn{8}{c}{\textbf{3er Octeto}} & & \multicolumn{8}{c}{\textbf{4to Octeto}} & \\
+\cmidrule(lr){2-9} \cmidrule(lr){11-18}
+\textbf{Bits} & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & \\
+\textbf{Binario} & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 & & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 & \\
+\textbf{Hosts} & 65536 & 32768 & 16384 & 8192 & 4096 & 2048 & 1024 & 512 & & 256 & 128 & 64 & 32 & 16 & 8 & 4 & 2 & \\
+\midrule
+
+% Tlahuizcalpan
+172.24. & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Tlahuizcalpan \\
+172.24. & 0 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Tlahuizcalpan \\
+\addlinespace
+
+% Poniente
+172.24. & 0 & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Poniente \\
+172.24. & 0 & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Poniente \\
+\addlinespace
+
+% Oriente
+172.24. & 0 & 0 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Oriente \\
+172.24. & 0 & 0 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Oriente \\
+\addlinespace
+
+% Amoxcalli
+172.24. & 0 & 1 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Amoxcalli \\
+172.24. & 0 & 1 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Amoxcalli \\
+\addlinespace
+
+% Física
+172.24. & 0 & 1 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Física \\
+172.24. & 0 & 1 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Física \\
+\addlinespace
+
+% Yelizcalli
+172.24. & 0 & 1 & 1 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Yelizcalli \\
+172.24. & 0 & 1 & 1 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Yelizcalli \\
+\addlinespace
+
+% Tlatipac
+172.24. & 0 & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Tlatipac \\
+172.24. & 0 & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Tlatipac \\
+\addlinespace
+
+% Biología A y B
+172.24. & 0 & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Biología A y B \\
+172.24. & 0 & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Biología A y B \\
+\addlinespace
+
+% Talleres
+172.24. & 0 & 1 & 1 & 1 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Talleres \\
+172.24. & 0 & 1 & 1 & 1 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Talleres \\
+\addlinespace
+
+% Matemáticas
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Matemáticas \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Matemáticas \\
+\addlinespace
+
+% Ex Biblioteca
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Ex Biblioteca \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Ex Biblioteca \\
+\addlinespace
+
+% A
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & Segmento A \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 0 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & Broadcast A \\
+\addlinespace
+
+% B
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 0 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & Segmento B \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 0 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & Broadcast B \\
+\addlinespace
+
+% C
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & Segmento C \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & Broadcast C \\
+\addlinespace
+
+% D
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 0 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & Segmento D \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 0 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & Broadcast D \\
+\addlinespace
+
+% E
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 1 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & Segmento E \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 1 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & Broadcast E \\
+\addlinespace
+
+% F
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 1 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & Segmento F \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 1 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & Broadcast F \\
+\addlinespace
+
+% G
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 1 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & Segmento G \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 1 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & Broadcast G \\
+\addlinespace
+
+% H
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 1 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & Segmento H \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 0 & 1 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & Broadcast H \\
+\addlinespace
+
+% I
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 1 & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & Segmento I \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 1 & 0 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & Broadcast I \\
+\addlinespace
+
+% J
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 1 & 0 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & Segmento J \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 1 & 0 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & Broadcast J \\
+\addlinespace
+
+% K
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & Segmento K \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & Broadcast K \\
+\addlinespace
+
+% L
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & Segmento L \\
+172.24. & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & . & 1 & 1 & 0 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & Broadcast L \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\vspace{15pt}
+
+\subsubsection*{Asignación de Subredes}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Parte Tlahuizcalpan:} \\
+    \textbf{Segmento de red:} 172.24.0.0 /19 \\
+    \textbf{Rango de IP's útiles:} 172.24.0.1 a 172.24.31.254 \\
+    \textbf{Broadcast:} 172.24.31.255 \\
+    \textbf{Máscara:} 255.255.224.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Poniente:} \\
+    \textbf{Segmento de red:} 172.24.32.0 /20 \\
+    \textbf{Rango de IP's útiles:} 172.24.32.1 a 172.24.47.254 \\
+    \textbf{Broadcast:} 172.24.47.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Oriente:} \\
+    \textbf{Segmento de red:} 172.24.48.0 /20 \\
+    \textbf{Rango de IP's útiles:} 172.24.48.1 a 172.24.63.254 \\
+    \textbf{Broadcast:} 172.24.63.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Amoxcalli:} \\
+    \textbf{Segmento de red:} 172.24.64.0 /20 \\
+    \textbf{Rango de IP's útiles:} 172.24.64.1 a 172.24.79.254 \\
+    \textbf{Broadcast:} 172.24.79.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Física:} \\
+    \textbf{Segmento de red:} 172.24.80.0 /20 \\
+    \textbf{Rango de IP's útiles:} 172.24.80.1 a 172.24.95.254 \\
+    \textbf{Broadcast:} 172.24.95.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Yelizcalli:} \\
+    \textbf{Segmento de red:} 172.24.96.0 /21 \\
+    \textbf{Rango de IP's útiles:} 172.24.96.1 a 172.24.103.254 \\
+    \textbf{Broadcast:} 172.24.103.255 \\
+    \textbf{Máscara:} 255.255.248.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Tlatipac:} \\
+    \textbf{Segmento de red:} 172.24.104.0 /22 \\
+    \textbf{Rango de IP's útiles:} 172.24.104.1 a 172.24.107.254 \\
+    \textbf{Broadcast:} 172.24.107.255 \\
+    \textbf{Máscara:} 255.255.252.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Biología A y B:} \\
+    \textbf{Segmento de red:} 172.24.108.0 /22 \\
+    \textbf{Rango de IP's útiles:} 172.24.108.1 a 172.24.111.254 \\
+    \textbf{Broadcast:} 172.24.111.255 \\
+    \textbf{Máscara:} 255.255.252.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Talleres:} \\
+    \textbf{Segmento de red:} 172.24.112.0 /22 \\
+    \textbf{Rango de IP's útiles:} 172.24.112.1 a 172.24.115.254 \\
+    \textbf{Broadcast:} 172.24.115.255 \\
+    \textbf{Máscara:} 255.255.252.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Matemáticas:} \\
+    \textbf{Segmento de red:} 172.24.116.0 /23 \\
+    \textbf{Rango de IP's útiles:} 172.24.116.1 a 172.24.117.254 \\
+    \textbf{Broadcast:} 172.24.117.255 \\
+    \textbf{Máscara:} 255.255.254.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Ex Biblioteca:} \\
+    \textbf{Segmento de red:} 172.24.118.0 /25 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.1 a 172.24.118.126 \\
+    \textbf{Broadcast:} 172.24.118.127 \\
+    \textbf{Máscara:} 255.255.255.128 
+    \vspace{5pt}
+
+    \item \textbf{Parte A:} \\
+    \textbf{Segmento de red:} 172.24.118.128 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.129 a 172.24.118.134 \\
+    \textbf{Broadcast:} 172.24.118.135 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte B:} \\
+    \textbf{Segmento de red:} 172.24.118.136 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.137 a 172.24.118.142 \\
+    \textbf{Broadcast:} 172.24.118.143 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte C:} \\
+    \textbf{Segmento de red:} 172.24.118.144 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.145 a 172.24.118.150 \\
+    \textbf{Broadcast:} 172.24.118.151 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte D:} \\
+    \textbf{Segmento de red:} 172.24.118.152 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.153 a 172.24.118.158 \\
+    \textbf{Broadcast:} 172.24.118.159 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte E:} \\
+    \textbf{Segmento de red:} 172.24.118.160 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.161 a 172.24.118.166 \\
+    \textbf{Broadcast:} 172.24.118.167 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte F:} \\
+    \textbf{Segmento de red:} 172.24.118.168 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.169 a 172.24.118.174 \\
+    \textbf{Broadcast:} 172.24.118.175 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte G:} \\
+    \textbf{Segmento de red:} 172.24.118.176 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.177 a 172.24.118.182 \\
+    \textbf{Broadcast:} 172.24.118.183 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte H:} \\
+    \textbf{Segmento de red:} 172.24.118.184 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.185 a 172.24.118.190 \\
+    \textbf{Broadcast:} 172.24.118.191 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte I:} \\
+    \textbf{Segmento de red:} 172.24.118.192 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.193 a 172.24.118.198 \\
+    \textbf{Broadcast:} 172.24.118.199 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte J:} \\
+    \textbf{Segmento de red:} 172.24.118.200 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.201 a 172.24.118.206 \\
+    \textbf{Broadcast:} 172.24.118.207 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte K:} \\
+    \textbf{Segmento de red:} 172.24.118.208 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.209 a 172.24.118.214 \\
+    \textbf{Broadcast:} 172.24.118.215 \\
+    \textbf{Máscara:} 255.255.255.248 
+    \vspace{5pt}
+
+    \item \textbf{Parte L:} \\
+    \textbf{Segmento de red:} 172.24.118.216 /29 \\
+    \textbf{Rango de IP's útiles:} 172.24.118.217 a 172.24.118.222 \\
+    \textbf{Broadcast:} 172.24.118.223 \\
+    \textbf{Máscara:} 255.255.255.248 
+\end{itemize}

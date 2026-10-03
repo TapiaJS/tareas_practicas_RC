@@ -68,4 +68,28 @@ Al ejecutar \texttt{show ip route} en R1, no aparece ninguna ruta hacia 192.168.
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 9...
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item ¿A qué capa del modelo OSI corresponde principalmente este problema?\\
+    A la capa 3 de red: como el problema es que un equipo no puede comunicarse con otro de distinta 
+    LAN hay un problema de enrutamiento.
+
+    \item ¿Qué protocolo de enrutamiento se está utilizando?\\
+    Protocolo RIPv2: es una extensi\'on de RIPv1 protocolo sin clases, m\'ascaras de subred son dadas y ofrece multicast.
+
+    \item ¿Qué comando utilizarías para comprobar si RIP está funcionando?\\
+    'show ip protocol'
+
+    \item ¿Qué comando utilizarías para revisar las rutas aprendidas?\\
+    'show ip route' aunque se puede usar 'show ip route rip' que muestra las rutas que aprendi\'opor RIP. 
+
+    \item ¿Qué podría ocurrir si R3 tiene mal configurado el comando network?\\
+    R3 no anunciar\'ia su red 192.168.3.0/24, y los routers no podr\'ian aprender la ruta ni llegar a LAN C.
+
+    \item ¿Cómo verificarías la conectividad entre los routers?\\
+    Haciendo ping entre los routers, primero desde R1 hacia R2, y luego desde R2 hacia R3. Si el ping 
+    falla, el problema está en la conectividad y no en RIP.
+
+    \item ¿Qué ruta debería aparecer en R1 para llegar a 192.168.3.0/24?\\
+    En R1 debería aparecer una ruta marcada con R (RIP) hacia 192.168.3.0/24, que indica que para llegar ahí hay que enviar los paquetes a R2.
+
+\end{enumerate}

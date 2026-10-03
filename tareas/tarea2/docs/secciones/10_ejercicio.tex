@@ -16,4 +16,27 @@ Un usuario puede hacer ping al servidor correctamente. Sin embargo, cuando inten
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 10...
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item ¿Qué capa del modelo OSI está involucrada principalmente?
+    
+    La Capa 4 (Transporte): Porque el enrutamiento básico funciona, pero el problema 
+    ocurre al intentar conectar con un puerto TCP específico para levantar un servicio.
+
+    \item ¿Qué protocolo de transporte se está utilizando?
+    
+    El protocolo TCP, ya que es el encargado de mantener la conexión de los servicios web en el puerto 80.
+    
+    \item ¿Qué diferencia existe entre comprobar conectividad con ping y comprobar un puerto TCP?
+    
+    El ping (Capa 3) comprueba si un dispositivo está encendido y responde en la red, y comprobar un puerto TCP (Capa 4) 
+    verifica si un servicio está encendido y aceptando conexiones.
+    
+    \item ¿Qué podría estar bloqueando la conexión?
+    
+    Un Firewall que esté bloqueando específicamente el tráfico hacia el puerto 80.
+    
+    \item ¿Cómo comprobarías si el puerto 80 está accesible?
+    
+    Usando el comando telnet 192.168.50.10 80.
+\end{enumerate}
+

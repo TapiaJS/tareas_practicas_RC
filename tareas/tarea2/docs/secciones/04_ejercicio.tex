@@ -45,4 +45,277 @@ Se debe hacer el VLSM con esos hosts.
 \end{tcolorbox}
 
 \subsection*{Solución}
-% Escribe aquí tu solución para el Problema 4...
+\subsubsection*{Lista de Redes}
+Se ordena de mayor a menor las redes de acuerdo a los hosts que necesitan y se le suman 2 hosts extra (segmento de red y el segmento broadcast):
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Terminal 1 Pasajeros:} $8000 + 2 = 8002$ hosts
+    \item \textbf{Red Wifi Pública Principal:} $5000 + 2 = 5002$ hosts
+    \item \textbf{Terminal 2 Pasajeros:} $4100 + 2 = 4102$ hosts
+    \item \textbf{Aduanas e Impuestos T1:} $3500 + 2 = 3502$ hosts
+    \item \textbf{Red de Locales Comerciales:} $3000 + 2 = 3002$ hosts
+    \item \textbf{Zona de Carga y Logística:} $2600 + 2 = 2602$ hosts
+    \item \textbf{Oficinas de Aerolíneas:} $2200 + 2 = 2202$ hosts
+    \item \textbf{Hoteles y Alojamientos AIFA:} $2050 + 2 = 2052$ hosts
+    \item \textbf{Sistemas de Check-in T2:} $1800 + 2 = 1802$ hosts
+    \item \textbf{Monitoreo de Cámaras CCTV:} $1500 + 2 = 1502$ hosts
+    \item \textbf{Estacionamientos y Accesos:} $1200 + 2 = 1202$ hosts
+    \item \textbf{Torre de Control y Pistas:} $1000 + 2 = 1002$ hosts
+    \item \textbf{Centro de Datos AIFA:} $500 + 2 = 502$ hosts
+    \item \textbf{Enlace Core a Terminal 1:} $2 + 2 = 4$ hosts
+    \item \textbf{Enlace Core a Terminal 2:} $2 + 2 = 4$ hosts
+    \item \textbf{Enlace Core a Torre de Control:} $2 + 2 = 4$ hosts
+    \item \textbf{Enlace Core a Zona de Carga:} $2 + 2 = 4$ hosts
+    \item \textbf{Enlace Terminal 1 a Terminal 2:} $2 + 2 = 4$ hosts
+    \item \textbf{Enlace Respaldo Data Center:} $2 + 2 = 4$ hosts
+\end{itemize}
+
+\subsubsection*{Tabla de Direccionamiento}
+
+\vspace{15pt}
+\begin{center}
+% \resizebox fuerza a la tabla a ajustarse al ancho exacto del texto sin desbordarse
+\resizebox{\linewidth}{!}{
+\begin{tabular}{r cccccccc c cccccccc c cccccccc l}
+\toprule
+& \multicolumn{8}{c}{\textbf{2do Octeto}} & & \multicolumn{8}{c}{\textbf{3er Octeto}} & & \multicolumn{8}{c}{\textbf{4to Octeto}} & \\
+\cmidrule(lr){2-9} \cmidrule(lr){11-18} \cmidrule(lr){20-27}
+\textbf{Bits} & 24 & 23 & 22 & 21 & 20 & 19 & 18 & 17 & & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & \\
+\textbf{Binario} & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 & & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 & & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 & \\
+\textbf{Hosts} & -- & -- & -- & -- & -- & -- & -- & -- & & 65536 & 32768 & 16384 & 8192 & 4096 & 2048 & 1024 & 512 & & 256 & 128 & 64 & 32 & 16 & 8 & 4 & 2 & \\
+\midrule
+
+% Terminal 1 Pasajeros
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Terminal 1 Pasajeros \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Terminal 1 Pasajeros \\
+\addlinespace
+
+% Red Wifi Pública Principal
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Red Wifi Pública Principal \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Red Wifi Pública Principal \\
+\addlinespace
+
+% Terminal 2 Pasajeros
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Terminal 2 Pasajeros \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Terminal 2 Pasajeros \\
+\addlinespace
+
+% Aduanas e Impuestos T1
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 1 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Aduanas e Impuestos T1 \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 1 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Aduanas e Impuestos T1 \\
+\addlinespace
+
+% Red de Locales Comerciales
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 1 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Red de Locales Comerciales \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 0 & 1 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Red de Locales Comerciales \\
+\addlinespace
+
+% Zona de Carga y Logística
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Zona de Carga y Logística \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Zona de Carga y Logística \\
+\addlinespace
+
+% Oficinas de Aerolíneas
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Oficinas de Aerolíneas \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Oficinas de Aerolíneas \\
+\addlinespace
+
+% Hoteles y Alojamientos AIFA
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Hoteles y Alojamientos AIFA \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Hoteles y Alojamientos AIFA \\
+\addlinespace
+
+% Sistemas de Check-in T2
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 1 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Sistemas de Check-in T2 \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 1 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Sistemas de Check-in T2 \\
+\addlinespace
+
+% Monitoreo de Cámaras CCTV
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 1 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Monitoreo de Cámaras CCTV \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 0 & 1 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Monitoreo de Cámaras CCTV \\
+\addlinespace
+
+% Estacionamientos y Accesos
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Estacionamientos y Accesos \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Estacionamientos y Accesos \\
+\addlinespace
+
+% Torre de Control y Pistas
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Torre de Control y Pistas \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Torre de Control y Pistas \\
+\addlinespace
+
+% Centro de Datos AIFA
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & \multicolumn{1}{c|}{0} & 0 & . & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Segmento Centro de Datos AIFA \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & \multicolumn{1}{c|}{0} & 1 & . & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & Broadcast Centro de Datos AIFA \\
+\addlinespace
+
+% Enlace Core a Terminal 1
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & Segmento Enlace Core a Terminal 1 \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 0 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & Broadcast Enlace Core a Terminal 1 \\
+\addlinespace
+
+% Enlace Core a Terminal 2
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 0 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & Segmento Enlace Core a Terminal 2 \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 0 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & Broadcast Enlace Core a Terminal 2 \\
+\addlinespace
+
+% Enlace Core a Torre de Control
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 0 & 1 & \multicolumn{1}{c|}{0} & 0 & 0 & Segmento Enlace Core a Torre de Control \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 0 & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & Broadcast Enlace Core a Torre de Control \\
+\addlinespace
+
+% Enlace Core a Zona de Carga
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 0 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & Segmento Enlace Core a Zona de Carga \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 0 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & Broadcast Enlace Core a Zona de Carga \\
+\addlinespace
+
+% Enlace Terminal 1 a Terminal 2
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 1 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & Segmento Enlace Terminal 1 a Terminal 2 \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 1 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & Broadcast Enlace Terminal 1 a Terminal 2 \\
+\addlinespace
+
+% Enlace Respaldo Data Center
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 1 & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & Segmento Enlace Respaldo Data Center \\
+10. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & . & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & . & 0 & 0 & 0 & 1 & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & Broadcast Enlace Respaldo Data Center \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\vspace{15pt}
+
+\subsubsection*{Asignación de Subredes}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Parte Terminal 1 Pasajeros:} \\
+    \textbf{Segmento de red:} 10.0.0.0 /19 \\
+    \textbf{Rango de IP's útiles:} 10.0.0.1 a 10.0.31.254 \\
+    \textbf{Broadcast:} 10.0.31.255 \\
+    \textbf{Máscara:} 255.255.224.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Red Wifi Pública Principal:} \\
+    \textbf{Segmento de red:} 10.0.32.0 /19 \\
+    \textbf{Rango de IP's útiles:} 10.0.32.1 a 10.0.63.254 \\
+    \textbf{Broadcast:} 10.0.63.255 \\
+    \textbf{Máscara:} 255.255.224.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Terminal 2 Pasajeros:} \\
+    \textbf{Segmento de red:} 10.0.64.0 /19 \\
+    \textbf{Rango de IP's útiles:} 10.0.64.1 a 10.0.95.254 \\
+    \textbf{Broadcast:} 10.0.95.255 \\
+    \textbf{Máscara:} 255.255.224.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Aduanas e Impuestos T1:} \\
+    \textbf{Segmento de red:} 10.0.96.0 /20 \\
+    \textbf{Rango de IP's útiles:} 10.0.96.1 a 10.0.111.254 \\
+    \textbf{Broadcast:} 10.0.111.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Red de Locales Comerciales:} \\
+    \textbf{Segmento de red:} 10.0.112.0 /20 \\
+    \textbf{Rango de IP's útiles:} 10.0.112.1 a 10.0.127.254 \\
+    \textbf{Broadcast:} 10.0.127.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Zona de Carga y Logística:} \\
+    \textbf{Segmento de red:} 10.0.128.0 /20 \\
+    \textbf{Rango de IP's útiles:} 10.0.128.1 a 10.0.143.254 \\
+    \textbf{Broadcast:} 10.0.143.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Oficinas de Aerolíneas:} \\
+    \textbf{Segmento de red:} 10.0.144.0 /20 \\
+    \textbf{Rango de IP's útiles:} 10.0.144.1 a 10.0.159.254 \\
+    \textbf{Broadcast:} 10.0.159.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Hoteles y Alojamientos AIFA:} \\
+    \textbf{Segmento de red:} 10.0.160.0 /20 \\
+    \textbf{Rango de IP's útiles:} 10.0.160.1 a 10.0.175.254 \\
+    \textbf{Broadcast:} 10.0.175.255 \\
+    \textbf{Máscara:} 255.255.240.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Sistemas de Check-in T2:} \\
+    \textbf{Segmento de red:} 10.0.176.0 /21 \\
+    \textbf{Rango de IP's útiles:} 10.0.176.1 a 10.0.183.254 \\
+    \textbf{Broadcast:} 10.0.183.255 \\
+    \textbf{Máscara:} 255.255.248.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Monitoreo de Cámaras CCTV:} \\
+    \textbf{Segmento de red:} 10.0.184.0 /21 \\
+    \textbf{Rango de IP's útiles:} 10.0.184.1 a 10.0.191.254 \\
+    \textbf{Broadcast:} 10.0.191.255 \\
+    \textbf{Máscara:} 255.255.248.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Estacionamientos y Accesos:} \\
+    \textbf{Segmento de red:} 10.0.192.0 /21 \\
+    \textbf{Rango de IP's útiles:} 10.0.192.1 a 10.0.199.254 \\
+    \textbf{Broadcast:} 10.0.199.255 \\
+    \textbf{Máscara:} 255.255.248.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Torre de Control y Pistas:} \\
+    \textbf{Segmento de red:} 10.0.200.0 /22 \\
+    \textbf{Rango de IP's útiles:} 10.0.200.1 a 10.0.203.254 \\
+    \textbf{Broadcast:} 10.0.203.255 \\
+    \textbf{Máscara:} 255.255.252.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Centro de Datos AIFA:} \\
+    \textbf{Segmento de red:} 10.0.204.0 /23 \\
+    \textbf{Rango de IP's útiles:} 10.0.204.1 a 10.0.205.254 \\
+    \textbf{Broadcast:} 10.0.205.255 \\
+    \textbf{Máscara:} 255.255.254.0 
+    \vspace{5pt}
+
+    \item \textbf{Parte Enlace Core a Terminal 1:} \\
+    \textbf{Segmento de red:} 10.0.206.0 /30 \\
+    \textbf{Rango de IP's útiles:} 10.0.206.1 a 10.0.206.2 \\
+    \textbf{Broadcast:} 10.0.206.3 \\
+    \textbf{Máscara:} 255.255.255.252 
+    \vspace{5pt}
+
+    \item \textbf{Parte Enlace Core a Terminal 2:} \\
+    \textbf{Segmento de red:} 10.0.206.4 /30 \\
+    \textbf{Rango de IP's útiles:} 10.0.206.5 a 10.0.206.6 \\
+    \textbf{Broadcast:} 10.0.206.7 \\
+    \textbf{Máscara:} 255.255.255.252 
+    \vspace{5pt}
+
+    \item \textbf{Parte Enlace Core a Torre de Control:} \\
+    \textbf{Segmento de red:} 10.0.206.8 /30 \\
+    \textbf{Rango de IP's útiles:} 10.0.206.9 a 10.0.206.10 \\
+    \textbf{Broadcast:} 10.0.206.11 \\
+    \textbf{Máscara:} 255.255.255.252 
+    \vspace{5pt}
+
+    \item \textbf{Parte Enlace Core a Zona de Carga:} \\
+    \textbf{Segmento de red:} 10.0.206.12 /30 \\
+    \textbf{Rango de IP's útiles:} 10.0.206.13 a 10.0.206.14 \\
+    \textbf{Broadcast:} 10.0.206.15 \\
+    \textbf{Máscara:} 255.255.255.252 
+    \vspace{5pt}
+
+    \item \textbf{Parte Enlace Terminal 1 a Terminal 2:} \\
+    \textbf{Segmento de red:} 10.0.206.16 /30 \\
+    \textbf{Rango de IP's útiles:} 10.0.206.17 a 10.0.206.18 \\
+    \textbf{Broadcast:} 10.0.206.19 \\
+    \textbf{Máscara:} 255.255.255.252 
+    \vspace{5pt}
+
+    \item \textbf{Parte Enlace Respaldo Data Center:} \\
+    \textbf{Segmento de red:} 10.0.206.20 /30 \\
+    \textbf{Rango de IP's útiles:} 10.0.206.21 a 10.0.206.22 \\
+    \textbf{Broadcast:} 10.0.206.23 \\
+    \textbf{Máscara:} 255.255.255.252 
+\end{itemize}
